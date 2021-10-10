@@ -29,7 +29,7 @@ Run the program
 
 ### Windows
 
-Install the latest version of python from [text link](https://www.python.org/downloads/ "python.org")
+Install the latest version of python from [the official website](https://www.python.org/downloads/ "python.org")
 
 Install virtualenv
 
