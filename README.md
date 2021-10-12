@@ -4,11 +4,12 @@ Tool to search for keywords in various forumns
 
 ## Setup
 
-you will need \
+you will need 
 * Python >=3.9
 * Virtualenv
 
 Clone the repository
+
 `git clone https://github.com/Milansuman/forum-scraper.git && cd forum-scraper`
 
 
@@ -28,12 +29,14 @@ Run the program
 
 ### Windows
 
-Install the latest version of python from [text link](https://www.python.org/downloads/ "python.org")
+Install the latest version of python from [the official website](https://www.python.org/downloads/ "python.org")
 
 Install virtualenv
+
 `pip install virtualenv`
 
 Activate the virtual environment
+
 `Powershell.exe -executionpolicy remotesigned -File ".\scraper-venv\bin\activate.ps1"`
 
 
