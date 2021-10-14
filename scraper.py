@@ -1,6 +1,7 @@
 import requests
-import gi
-from gi.repository import GTK
+#import gi
+#gi.require_version("Gtk", "4.0")
+#from gi.repository import Gtk
 from bs4 import BeautifulSoup
 
 forums = {
@@ -11,12 +12,16 @@ def find(search):
     response = requests.get(forums["reddit"]+search)
     soup = BeautifulSoup(response.content, "html.parser")
     for link in soup.find_all("a"):
-        if "settings" in link.get("href") or "img" in link.get("href"):
+        if "settings" in link.get("href") or "img" in link.get("href") or "github.com/" in link.get("href"):
             continue
         print(link.get("href"))
 
 def main():
-    pass
+    while True:
+        search = input("What do you want to find: ")
+        if search in ("quit", "exit"):
+            break
+        find(search)
 
 if __name__ == "__main__":
     main()
