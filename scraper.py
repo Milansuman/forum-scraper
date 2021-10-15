@@ -4,24 +4,28 @@ import requests
 #from gi.repository import Gtk
 from bs4 import BeautifulSoup
 
-forums = {
-    "reddit": "http://libredd.it/search?q="
-}
-
-def find(search):
-    response = requests.get(forums["reddit"]+search)
+def find(search, filter):
+    response = requests.get(f"http://libredd.it/search?q={search}&sort=relevance")
     soup = BeautifulSoup(response.content, "html.parser")
     for link in soup.find_all("a"):
         if "settings" in link.get("href") or "img" in link.get("href") or "github.com/" in link.get("href"):
             continue
-        print(link.get("href"))
+
+        if filter in link.get("href"):
+            print(link.get("href"))
+        else:
+            continue
 
 def main():
+    filter = ""
     while True:
-        search = input("What do you want to find: ")
-        if search in ("quit", "exit"):
+        command = input("> ")
+        if command in ("quit", "exit"):
             break
-        find(search)
+        elif command.split(" ")[0] == "search":
+            find(command.replace("search ", ""), filter)
+        elif command.split(" ")[0] == "filter":
+            filter = "" if len(command.split(" ")) == 1 else command.split(" ")[1]
 
 if __name__ == "__main__":
     main()
